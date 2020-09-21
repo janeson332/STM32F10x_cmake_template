@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "Debug (OpenOCD)",
+            "servertype": "openocd",
+            "cwd": "${workspaceRoot}",
+            "runToMain": true,
+            "executable": "./build/TemplateProject.elf",
+            "device": "STM32F103C8Tx",
+            "searchDir": [
+                "${workspaceRoot}/scripts"
+            ],
+            "configFiles": [
+                "openocd.cfg"
+            ],
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 8000000,
+                "swoFrequency": 2000000,
+                "source": "probe",
+                "decoders": [
+                    { "type": "console", "label": "ITM", "port": 0 }
+                ]
+            },
+            "svdFile": "${workspaceRoot}/scripts/STM32F103xx.svd"
+        }
+    ]
+}
